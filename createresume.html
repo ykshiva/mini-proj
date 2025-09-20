@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Resume - Resume Builder</title>
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Create Your Resume</h2>
+    <form id="resumeForm">
+
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required>
+
+        
+        <fieldset>
+            
+  <fieldset>
+      <label for="photo">Upload Photo</label>
+  <input type="file" id="photo" accept="image/*">
+  <div class="photo-preview">
+    <img id="photoPreview" src="#" alt="Profile Photo" style="display:none; max-width: 150px; margin-top: 10px;">
+  </div>
+  </fieldset>
+  
+</fieldset>
+       
+        
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone">
+      </fieldset>
+
+      <fieldset>
+        <legend>Education</legend>
+        <label for="education">Education</label>
+        <textarea id="education" rows="4" placeholder="e.g., B.Sc. in Computer Science from XYZ University (2019-2023)" required></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Experience</legend>
+        <label for="experience">Work Experience</label>
+        <textarea id="experience" rows="4" placeholder="e.g., Software Intern at ABC Corp (2022)" required></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Skills</legend>
+        <label for="skills">Skills</label>
+        <input type="text" id="skills" placeholder="e.g., HTML, CSS, JavaScript, Python">
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit">Save Resume</button>
+        <button type="button" onclick="previewResume()">Preview</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('resumeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const resumeData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        education: document.getElementById('education').value,
+        experience: document.getElementById('experience').value,
+        skills: document.getElementById('skills').value,
+      };
+
+      // Simulate saving to localStorage or backend
+      localStorage.setItem('resumeData', JSON.stringify(resumeData));
+
+      alert('Resume saved!');
+    });
+
+    function previewResume() {
+      window.location.href = 'preview-resume.html'; // (You can create this next)
+    }
+    
+  const photoInput = document.getElementById('photo');
+  const photoPreview = document.getElementById('photoPreview');
+  let photoDataURL = '';
+
+  photoInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        photoDataURL = e.target.result;
+        photoPreview.src = photoDataURL;
+        photoPreview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  document.getElementById('resumeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const resumeData = {
+      fullName: document.getElementById('fullName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      education: document.getElementById('education').value,
+      experience: document.getElementById('experience').value,
+      skills: document.getElementById('skills').value,
+      photo: photoDataURL // Add photo data
+    };
+
+    localStorage.setItem('resumeData', JSON.stringify(resumeData));
+    alert('Resume saved!');
+  });
+
+
+  </script>
+</body>
+</html>

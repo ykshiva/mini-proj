@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Dashboard - Resume Builder</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Welcome, <span id="username">User</span></h1>
+      <button id="logoutBtn">Logout</button>
+    </header>
+
+    <main>
+      <section class="dashboard-actions">
+        <button id="createResumeBtn">+ Create New Resume</button>
+      </section>
+
+      <section class="resume-list">
+        <h2>Your Resumes</h2>
+        <ul id="resumeItems">
+          <!-- Resume items will be injected here -->
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Simulated user data
+    const user = {
+      name: "John Doe",
+      resumes: [
+        { title: "Software Engineer Resume", lastEdited: "2025-09-01" },
+        { title: "Frontend Developer Resume", lastEdited: "2025-08-20" }
+      ]
+    };
+
+    document.getElementById('username').textContent = user.name;
+
+    const resumeList = document.getElementById('resumeItems');
+
+    user.resumes.forEach((resume, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div class="resume-item">
+          <h3>${resume.title}</h3>
+          <p>Last edited: ${resume.lastEdited}</p>
+          <button onclick="editResume(${index})">Edit</button>
+        </div>
+      `;
+      resumeList.appendChild(li);
+    });
+
+    function editResume(index) {
+      const resume = user.resumes[index];
+      alert("Opening: " + resume.title);
+      // Redirect or open editor page here
+    }
+
+    document.getElementById('createResumeBtn').addEventListener('click', () => {
+      alert("Redirecting to resume creation page...");
+      // window.location.href = "create-resume.html"; // Create page
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      alert("Logging out...");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

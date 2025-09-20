@@ -1,0 +1,77 @@
+.dashboard-container {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+#logoutBtn {
+  background-color: #dc3545;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logoutBtn:hover {
+  background-color: #c82333;
+}
+
+.dashboard-actions {
+  margin-bottom: 30px;
+}
+
+#createResumeBtn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#createResumeBtn:hover {
+  background-color: #218838;
+}
+
+.resume-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume-item {
+  background: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.resume-item h3 {
+  margin: 0 0 10px;
+}
+
+.resume-item button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.resume-item button:hover {
+  background-color: #0056b3;
+}
